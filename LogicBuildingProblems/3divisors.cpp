@@ -1,7 +1,3 @@
-// C++ program to print all
-// three-primes smaller than
-// or equal to n without using
-// extra space
 #include <bits/stdc++.h>
 using namespace std;
 
