@@ -19,6 +19,6 @@ func bubbleSort(arr []int) []int {
 	return arr
 }
 func main() {
-	arr := []int{12, 11, 13, 5, 6}
+	arr := []int{12, 11, 13, 5, 6} // 5 6 11 12 13
 	fmt.Println(bubbleSort(arr))
 }

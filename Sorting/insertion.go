@@ -17,5 +17,5 @@ func insertionSort(arr []int) []int {
 }
 func main() {
 	arr := []int{12, 11, 13, 5, 6}
-	fmt.Println(insertionSort(arr))
+	fmt.Println(insertionSort(arr)) // 5 6 11 12 13
 }
