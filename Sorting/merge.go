@@ -6,15 +6,15 @@ func merge(arr []int, left, mid, right int) {
 	n1, n2 := mid-left+1, right-mid
 	L := make([]int, n1)
 	R := make([]int, n2)
-	//fmt.Println("left =", left, "mid =", mid, "right=", right)
+	fmt.Println("left =", left, "mid =", mid, "right=", right)
 	for i := 0; i < n1; i++ {
 		L[i] = arr[left+i]
 	}
-	//fmt.Println("L=", L)
+	fmt.Println("L=", L)
 	for j := 0; j < n2; j++ {
 		R[j] = arr[mid+1+j]
 	}
-	//fmt.Println("R=", R)
+	fmt.Println("R=", R)
 	i, j := 0, 0
 	k := left
 	for i < n1 && j < n2 {
