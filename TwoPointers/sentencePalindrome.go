@@ -4,29 +4,27 @@ import (
 	"bufio"
 	"fmt"
 	"os"
+	"unicode"
 )
 
 func sentencePalindrome(scanner *bufio.Scanner) bool {
 	scanner.Scan()
 	text := scanner.Text()
-	runes := []rune(text)
 	left, right := 0, len(text)-1
+
 	for left < right {
-		if runes[left] >= 65 && runes[left] <= 90 {
-			runes[left] += 32
-		}
-		if runes[right] >= 65 && runes[right] <= 90 {
-			runes[right] += 32
-		}
-		if (runes[left] < 48 || runes[left] > 57) && (runes[left] < 97 || runes[left] > 122) {
+		leftChar := unicode.ToLower(rune(text[left]))
+		rightChar := unicode.ToLower(rune(text[right]))
+
+		if !unicode.IsLetter(leftChar) && !unicode.IsDigit(leftChar) {
 			left++
 			continue
 		}
-		if (runes[right] < 48 || runes[right] > 57) && (runes[right] < 97 || runes[right] > 122) {
+		if !unicode.IsLetter(rightChar) && !unicode.IsDigit(rightChar) {
 			right--
 			continue
 		}
-		if runes[left] != runes[right] {
+		if leftChar != rightChar {
 			return false
 		}
 		left++
