@@ -1,19 +1,38 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
 
 func smallesWindow012(s string) int {
-	i := 0
-	for i < len(s)-2 {
-		if s[i] == '0' && s[i+1] == '1' && s[i+2] == '2' {
-			return 3
+	zero, one, two := false, false, false
+	indexZero, indexOne, indexTwo := 0, 0, 0
+	result := math.MaxInt32
+	for i, value := range s {
+		if value == '0' {
+			zero = true
+			indexZero = i
+		} else if value == '1' {
+			one = true
+			indexOne = i
+		} else if value == '2' {
+			two = true
+			indexTwo = i
 		}
-		i++
+
+		if zero && one && two {
+			result = min(result,
+				max(indexZero, indexOne, indexTwo)-min(indexZero, indexOne, indexTwo))
+		}
 	}
-	return -1
+	if result == math.MaxInt32 {
+		return -1
+	}
+	return result + 1
 }
 
 func main() {
-	s := "012"
+	s := "0012"
 	fmt.Println(smallesWindow012(s))
 }
