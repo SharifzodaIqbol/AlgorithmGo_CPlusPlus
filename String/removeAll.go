@@ -4,13 +4,18 @@ import (
 	"fmt"
 )
 
-func removeAllChar(s string, ch string) string {
-	/*fmt.Println(strings.TrimFunc(s, func(r rune) bool {
-	}))*/
-	return ""
+func removeAllChar(s []rune, ch rune) string {
+	j := 0
+	for i := 0; i < len(s); i++ {
+		if s[i] != ch {
+			s[j] = s[i]
+			j++
+		}
+	}
+	return string(s[:j])
 }
 
 func main() {
-	s := "HelloWorld"
-	fmt.Println(removeAllChar(s, "ll"))
+	s := []rune("HelloWorld")
+	fmt.Println(removeAllChar(s, 'l'))
 }
