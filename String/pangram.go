@@ -8,7 +8,7 @@ import (
 )
 
 func check(arr [26]rune) bool {
-	for i := 0; i <= len(arr); i++ {
+	for i := 0; i < len(arr); i++ {
 		if arr[i] == 0 {
 			return false
 		}
@@ -23,7 +23,7 @@ func isPangram(s *bufio.Scanner) bool {
 	for i := 0; i < len(text); i++ {
 		toRune := unicode.ToLower(rune(text[i]))
 		if unicode.IsLetter(toRune) {
-			arr[toRune]++
+			arr[toRune-'a']++
 		}
 	}
 	if check(arr) {
@@ -33,6 +33,6 @@ func isPangram(s *bufio.Scanner) bool {
 }
 
 func main() {
-	s := bufio.NewScanner(strings.NewReader("The quick brown fox jumps over the lazy dog"))
+	s := bufio.NewScanner(strings.NewReader("The quick brown fox jumps over the dog"))
 	fmt.Println(isPangram(s))
 }
