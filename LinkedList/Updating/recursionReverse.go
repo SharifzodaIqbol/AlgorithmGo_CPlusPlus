@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 type Node struct {
 	Val  int
@@ -22,18 +24,14 @@ func print(node *Node) {
 		node = node.Next
 	}
 }
-func reverse(head *Node) *Node {
-	var prev *Node
-	var next *Node
-	curr := head
-	for curr != nil {
-		next = curr.Next // 9 // 23 // nil
-		fmt.Println(curr.Next, prev)
-		curr.Next = prev // 23 -> 9 -> 6 -> nil
-		prev = curr      // 6 // 9 // 23
-		curr = next      // 9 // 23 // nil
+func recursionReverse(head *Node) (x *Node) {
+	if head == nil || head.Next == nil {
+		return head
 	}
-	return prev
+	x = recursionReverse(head.Next)
+	head.Next.Next = head
+	head.Next = nil
+	return x
 }
 func main() {
 	node := NewNode(6)
@@ -41,5 +39,5 @@ func main() {
 	node.Next.Next = NewNode(23)
 	print(node)
 	fmt.Println()
-	print(reverse(node))
+	print(recursionReverse(node))
 }
